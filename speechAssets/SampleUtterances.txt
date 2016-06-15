@@ -1,0 +1,2 @@
+SpellIntent look up {Spell}
+SpellIntent what is {Spell}

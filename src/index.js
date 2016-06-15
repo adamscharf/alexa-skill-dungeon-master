@@ -49,10 +49,10 @@ HowTo.prototype.eventHandlers.onLaunch = function (launchRequest, session, respo
 };
 
 HowTo.prototype.intentHandlers = {
-    "RecipeIntent": function (intent, session, response) {
+    "SpellIntent": function (intent, session, response) {
         var spellSlot = intent.slots.Spell,
             spellName;
-        if (spellSlot && spellSlot.value){
+        if (spellSlot && spellSlot.value) {
             spellName = spellSlot.value.toLowerCase();
         }
 

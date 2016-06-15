@@ -1,19 +1,28 @@
-#Sample AWS Lambda function for Alexa
-A simple [AWS Lambda](http://aws.amazon.com/lambda) function that demonstrates how to write a skill for the Amazon Echo using the Alexa SDK.
+#Alexa Skill: Dungeon Master
+A simple [AWS Lambda](http://aws.amazon.com/lambda) function that performs spell lookups using on the Amazon Echo using the Alexa SDK.
 
-## Concepts
-This sample shows how to create a Lambda function for handling Alexa Skill requests that:
 
-- Custom slot type: demonstrates using custom slot types to handle a finite set of known values
+## Building the zip file
+1. Make sure that there's not a .zip file already present under `SpellTemplate/`. If there is, remove it.
+2. `cd` into the `src/` folder
+3. run the following:
+
+  ```shell
+  $ zip ../SpellTemplate/spellTemplate.zip *
+  ```
 
 ## Setup
-To run this example skill you need to do two things. The first is to deploy the example code in lambda, and the second is to configure the Alexa skill to use Lambda.
+To run this example skill you need to do two things.
+
+1. [Deploy the example code in lambda](#aws-lambda-setup)
+2. [Configure the Alexa skill to use Lambda](#alexa-skill-setup)
+
 
 ### AWS Lambda Setup
-1. Go to the AWS Console and click on the Lambda link. Note: ensure you are in us-east or you won't be able to use Alexa with Lambda.
+1. Go to the [AWS Console](aws.amazon.com) and click on the Lambda link. Note: ensure you are in us-east or you won't be able to use Alexa with Lambda.
 2. Click on the Create a Lambda Function or Get Started Now button.
 3. Skip the blueprint
-4. Name the Lambda Function "Minecraft-Helper-Example-Skill".
+4. Name the Lambda Function "DungeonMasterSkill".
 5. Select the runtime as Node.js
 6. Go to the the src directory, select all files and then create a zip file, make sure the zip file does not contain the src directory itself, otherwise Lambda function will not work.
 7. Select Code entry type as "Upload a .ZIP file" and then upload the .zip file to the Lambda
@@ -28,7 +37,7 @@ To run this example skill you need to do two things. The first is to deploy the 
 
 ### Alexa Skill Setup
 1. Go to the [Alexa Console](https://developer.amazon.com/edw/home.html) and click Add a New Skill.
-2. Set "MinecraftHelper" as the skill name and "minecraft helper" as the invocation name, this is what is used to activate your skill. For example you would say: "Alexa, Ask minecraft help how to make a door."
+2. Set "DungeonMaster" as the skill name and "dungeon master" as the invocation name, this is what is used to activate your skill. For example you would say: "Alexa, Ask dungeon master to lookup fire bolt"
 3. Select the Lambda ARN for the skill Endpoint and paste the ARN copied from above. Click Next.
 4. Copy the custom slot types from the customSlotTypes folder. Each file in the folder represents a new custom slot type. The name of the file is the name of the custom slot type, and the values in the file are the values for the custom slot.
 5. Copy the Intent Schema from the included IntentSchema.json.
@@ -41,5 +50,5 @@ To run this example skill you need to do two things. The first is to deploy the 
 
 ## Examples
 ### One-shot model:
-    User: "Alexa, ask Minecraft Helper how to make paper."
-    Alexa: "(reads back recipe for paper)"
+    User: "Alexa, ask Dungeon Master to look up fire bolt."
+    Alexa: "(reads back description for fire bolt)"

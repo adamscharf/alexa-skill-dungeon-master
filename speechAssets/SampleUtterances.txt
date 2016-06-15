@@ -1,2 +1,12 @@
+SpellIntent look up the {Spell} spell
+SpellIntent look up the spell, {Spell}
 SpellIntent look up {Spell}
+SpellIntent what is the description for the {Spell} spell
+SpellIntent what is the descriptions for {Spell}
+SpellIntent what is the description for the spell, {Spell}
+SpellIntent what is the {Spell} spell
 SpellIntent what is {Spell}
+SpellIntent what is the spell, {Spell}
+SpellIntent describe {Spell}
+SpellIntent describe the {Spell} spell
+SpellIntent describe the spell, {Spell}

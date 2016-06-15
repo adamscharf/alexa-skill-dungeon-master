@@ -22,7 +22,7 @@
 'use strict';
 
 var AlexaSkill = require('./AlexaSkill'),
-    recipes = require('./spells');
+    spells = require('./spells');
 
 var APP_ID = undefined; //OPTIONAL: replace with 'amzn1.echo-sdk-ams.app.[your-unique-value-here]';
 
@@ -41,7 +41,7 @@ HowTo.prototype = Object.create(AlexaSkill.prototype);
 HowTo.prototype.constructor = HowTo;
 
 HowTo.prototype.eventHandlers.onLaunch = function (launchRequest, session, response) {
-    var speechText = "Welcome to the How To Helper. You can ask a question like, what's the recipe for a chest? ... Now, what can I help you with.";
+    var speechText = "Welcome to the Dungeon Master helper. You can ask a question like, lookup fire bolt. ... Now, what can I help you with.";
     // If the user either does not reply to the welcome message or says something that is not
     // understood, they will be prompted again with this text.
     var repromptText = "For instructions on what you can say, please say help me.";
@@ -50,26 +50,26 @@ HowTo.prototype.eventHandlers.onLaunch = function (launchRequest, session, respo
 
 HowTo.prototype.intentHandlers = {
     "RecipeIntent": function (intent, session, response) {
-        var itemSlot = intent.slots.Item,
-            itemName;
-        if (itemSlot && itemSlot.value){
-            itemName = itemSlot.value.toLowerCase();
+        var spellSlot = intent.slots.Spell,
+            spellName;
+        if (spellSlot && spellSlot.value){
+            spellName = spellSlot.value.toLowerCase();
         }
 
-        var cardTitle = "Recipe for " + itemName,
-            recipe = recipes[itemName],
+        var cardTitle = "Description for " + spellName,
+            description = spells[spellName],
             speechOutput,
             repromptOutput;
-        if (recipe) {
+        if (description) {
             speechOutput = {
-                speech: recipe,
+                speech: description,
                 type: AlexaSkill.speechOutputType.PLAIN_TEXT
             };
-            response.tellWithCard(speechOutput, cardTitle, recipe);
+            response.tellWithCard(speechOutput, cardTitle, description);
         } else {
             var speech;
-            if (itemName) {
-                speech = "I'm sorry, I currently do not know the recipe for " + itemName + ". What else can I help with?";
+            if (spellName) {
+                speech = "I'm sorry, I currently do not know the description for " + spellName + ". What else can I help with?";
             } else {
                 speech = "I'm sorry, I currently do not know that recipe. What else can I help with?";
             }
@@ -96,8 +96,8 @@ HowTo.prototype.intentHandlers = {
     },
 
     "AMAZON.HelpIntent": function (intent, session, response) {
-        var speechText = "You can ask questions such as, what's the recipe, or, you can say exit... Now, what can I help you with?";
-        var repromptText = "You can say things like, what's the recipe, or you can say exit... Now, what can I help you with?";
+        var speechText = "You can ask questions such as, look up the spell, or, you can say exit... Now, what can I help you with?";
+        var repromptText = "You can say things like, desribe the spell, or you can say exit... Now, what can I help you with?";
         var speechOutput = {
             speech: speechText,
             type: AlexaSkill.speechOutputType.PLAIN_TEXT

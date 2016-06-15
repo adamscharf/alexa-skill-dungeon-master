@@ -24,7 +24,7 @@
 var AlexaSkill = require('./AlexaSkill'),
     spells = require('./spells');
 
-var APP_ID = undefined; //OPTIONAL: replace with 'amzn1.echo-sdk-ams.app.[your-unique-value-here]';
+var APP_ID = 'amzn1.echo-sdk-ams.app.09c1d1c4-a4c5-4ebd-a3d3-21734232cb92';
 
 /**
  * MinecraftHelper is a child of AlexaSkill.
